@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio Website </title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://kit.fontawesome.com/c254e24a8.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="header">
+        <div class="container">
+            <nav>
+                <img src="logo.png" class="logo">
+                <ul id="sidemenu">
+                    <li><a href="#header">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">projects</a></li>
+                    <li><a href="#contact">contact</a></li>
+                    <i class="fas fa-times" onclick="closemenu()"></i>
+                </ul>
+                <i class="fas fa-bars" onclick="openmenu()"></i>
+            </nav>
+            <div class="header-text">
+                <p>Welcome to my portfolio</p>
+                <h1>Hi,I'am <span>Dinesh Pamarathi</span><br>from India,Andhra pradesh</h1>
+            </div>
+        </div>
+    </div>
+    <!------------------about----------------------->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="about-col-1">
+                    <img src="Dineshvirat.png">
+                </div>
+                <div class="about-col-2">
+                    <h1 class="sub-title">About Me</h1>
+                    <p>I am P.Dinesh.<mark>This are my education details</mark>.I have completed my btech graduation in amrita university.I have completed my schooling from sri chaitanya with 95%.my intermediate from srichaitanya college mayuri bavan with 97%.</p>
+
+                    <div class="tab-titles">
+                        <p class="tab-links active-link"onclick="opentab('skills')">skills</p>
+                        </div>
+                        <div class="tab-contents"id="skills">
+                            <ul>
+                            <li><span>HTML and CSS</span><br>I have designed some websites with these.</li>
+                            <li><span>java and python</span><br>I have created some applications with these languages</li>
+                            <li><span>Non acadamics</span><br>I am good in playing cricket and badminton.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-------------------- projects------------->
+<div id="projects">
+    <div class="container">
+        <h1 class="sub-title">My projects</h1>
+        <div class="projects-list">
+            <div>
+                <i class="fas fa-code"></i>
+                <h2>Calculator Web Application</h2>
+                <p>Developed a functional calculator web application, allowing users to perform basic arithmetic operations.</p>
+                <a href="https://codepen.io/FlorinPop17/full/WNeggor" target="_blank">learn more</a>
+            </div>
+            <div>
+                <i class="fas fa-crop-alt"></i>
+                <h2>Personal Blog</h2>
+                <p>Created a personal blog platform where I can write and publish articles.</p>
+                <a href="https://dev.to" target="_blank">learn more</a>
+            </div>
+            <div>
+                <i class="fab fa-app-store"></i>
+                <h2>Responsive Landing Page</h2>
+                <p>Designed and developed a responsive landing page for a fictional product, focusing on a clean design and clear call to action.</p>
+                <a href="https://neon-dolphin-a3f6a0.netlify.app/" target="_blank">learn more</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-----------contact------------->
+<div id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="contact-left">
+                <h1 class="sub-title">Contact Me</h1>
+                <p>"dineshpamarathi2006@gmail.com"</p>
+                <p>"8328250108"</p>
+                <div class="social-icons">
+                    <a href=" https://www.facebook.com/share/15fN3xtA3U/ "><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/dinesh__virat"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/pamarathi-dinesh-44235b334 "><i class="fab fa-linkedin"></i></a>
+                 </div>
+            </div>
+            <div class="contact-right">
+                <form>
+                    <form name="submit-to-google-sheet">
+
+                        <input type="text" name="Name" placeholder="Your Name" required>
+    
+                        <input type="text" name="email" placeholder="Your Email" required>
+    
+                        <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+    
+                        <button type="submit"class="btn btn2">submit</button>
+    
+                    </form>
+    
+                    <span id="msg"></span>
+    
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="copyright">
+
+    <p>Copyright @dinesh,this has been made by<i class="fas fa-heart"></i> Dinesh</p>
+
+</div>
+<!----------java script for responsive---------------------->
+<script>
+    var sidemenu = document.getElementById("sidemenu");
+
+    function openmenu(){
+        sidemenu.style.right="0";
+    }
+    function closemenu(){
+        sidemenu.style.right="-200px";
+    }
+</script>
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxjcQRUjMDFwROndzqx3s_wQhHTJotBaeiExxcJDIDFyPvk-_iCaa6qq9JGdXhVbA_s/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const msg = document.getElementsById("msg")
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            msg.innerHTML ="Message sent successfully"
+            setTimeout(function(){
+                msg.innerHTML=""
+            },5000)
+            form.reset()
+        })
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+</body>
+</html>
